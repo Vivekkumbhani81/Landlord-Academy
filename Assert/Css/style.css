@@ -33,6 +33,7 @@ button {
 
 p {
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body h1,
@@ -42,6 +43,7 @@ body h4,
 body h5,
 body h6 {
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 ul,
@@ -112,7 +114,7 @@ section {
 .nice-select .option:hover,
 .nice-select .option.focus,
 .nice-select .option.selected.focus {
-  color: red;
+  color: #8391A2;
   background: none;
 }
 
@@ -449,7 +451,34 @@ input.property_inner_input {
 .annual_property_box {
   display: block;
 }
+.form-control:focus{
+  box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+}
+input#formGroupExampleInput {
+  border-radius: 8px;
+  color: #8391A2;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  box-shadow: none;
+  border: 1px solid #EEF2F7;
+}
 
+.nice-select {
+  border-radius: 8px;
+  color: #8391A2;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #EEF2F7;
+}
+input.property_inner_input:focus-visible{
+  outline: none;
+}
 
 
 
@@ -469,7 +498,8 @@ input.property_inner_input {
   /* z-index: 600; */
   margin-left: 0%;
 }
-.menu_toggle_btn span {
+
+/* .menu_toggle_btn span {
   width: 25px;
   height: 3px;
   margin-bottom: 5px;
@@ -477,30 +507,34 @@ input.property_inner_input {
   background: #EB6A2A;
   transition: all 0.5s ease;
 }
+
 .menu_toggle_btn span:nth-child(1) {
   margin-top: 5px;
-}
-
-
-
-
-
-
-/* #sidebarClose{
-  display: none;
 } */
-button#sidebarClose{
 
+
+
+
+
+
+
+button#sidebarClose {
   text-decoration: none;
 }
-i.fa-solid.fa-xmark{
+
+button#sidebarToggle {
+  display: none;
+}
+
+i.fa-solid.fa-xmark {
   color: #225CCB;
   font-size: 37px;
   position: absolute;
   top: 0.3%;
-  left: 0%;
-  right: 0%;
+  right: 5%;
+  display: none;
 }
+
 .logo {
   width: 100%;
   margin-bottom: 30px;
@@ -521,15 +555,18 @@ i.fa-solid.fa-bars {
   color: #000;
 }
 
-i.fa-solid.fa-bag-shopping,i.fa-solid.fa-building {
+i.fa-solid.fa-bag-shopping,
+i.fa-solid.fa-building {
   font-size: 20px;
   color: black;
 }
-i.fa-brands.fa-airbnb{
+
+i.fa-brands.fa-airbnb {
   font-weight: 800;
   font-size: 20px;
   color: #000;
 }
+
 .sb-nav-link-icon {
   display: flex;
   width: 42px;
@@ -551,21 +588,27 @@ i.fa-brands.fa-airbnb{
   line-height: normal;
   margin-left: 5px;
 }
-.nav-link:hover .sb-nav-link-icon{
+
+.nav-link:hover .sb-nav-link-icon {
   border: 1px solid #225CCB;
 }
-.nav-link:hover i.fa-solid.fa-bag-shopping{
+
+.nav-link:hover i.fa-solid.fa-bag-shopping {
   color: #225CCB;
 }
-.nav-link:hover i.fa-brands.fa-airbnb{
+
+.nav-link:hover i.fa-brands.fa-airbnb {
   color: #225CCB;
 }
-.nav-link:hover i.fa-solid.fa-building{
+
+.nav-link:hover i.fa-solid.fa-building {
   color: #225CCB;
 }
-.nav-link:hover .sidbar_text{
+
+.nav-link:hover .sidbar_text {
   color: #225CCB;
 }
+
 #layoutAuthentication {
   display: flex;
   flex-direction: column;
@@ -585,12 +628,16 @@ i.fa-brands.fa-airbnb{
   display: flex;
 }
 
+.sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
+  transform: translateX(0px);
+}
+
 #layoutSidenav #layoutSidenav_nav {
-  flex-basis: 388px;
+  flex-basis: 355px;
   flex-shrink: 0;
   transition: transform 0.15s ease-in-out;
   z-index: 1038;
-  transform: translateX(-399px);
+  transform: translateX(-0px);
 }
 
 #layoutSidenav #layoutSidenav_content {
@@ -600,36 +647,21 @@ i.fa-brands.fa-airbnb{
   min-width: 0;
   flex-grow: 1;
   min-height: calc(100vh - 56px);
-  margin-left: -374px;
+  margin-left: -5px;
 }
 
-.sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
-  transform: translateX(0);
-}
-
-.sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 1037;
-  opacity: 0.5;
-  transition: opacity 0.3s ease-in-out;
-}
-.logo_none{
+.logo_none {
   display: none;
 }
+
+
 @media (max-width: 1024px) {
+
   #layoutSidenav #layoutSidenav_nav {
     transform: translateX(0);
   }
 
-  #layoutSidenav #layoutSidenav_content {
-    margin-left: 0;
+  #layoutSidenav #layoutSidenav_content::before {
     transition: margin 0.15s ease-in-out;
   }
 
@@ -640,6 +672,15 @@ i.fa-brands.fa-airbnb{
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
     display: none;
   }
+}
+
+.sb-sidenav-dark {
+  padding: 35px 30px 50px 25px;
+}
+
+#layoutSidenav #layoutSidenav_nav {
+  flex-basis: 340px;
+  transform: translateX(-385px);
 }
 
 .sb-nav-fixed .sb-topnav {

@@ -40,7 +40,7 @@ $(function () {
       // plotBands: []
     },
     tooltip: {
-      // valueSuffix: ' users/week'
+      valueSuffix: ' users/week'
     },
     plotOptions: {
       spline: {
@@ -144,77 +144,44 @@ $(function () {
 
 //---------------------------------------------------------------------------------------------------------------------------------
 
-// window.addEventListener('DOMContentLoaded', event => {
+function openNav() {
+  console.log("opennav");
+  document.body.classList.toggle('sb-sidenav-toggled');
+}
+function closeNav() {
+  console.log("opennav");
+  document.body.classList.toggle('sb-sidenav-toggled');
+}
 
-//   // Toggle the side navigation
-//   const sidebarToggle = document.body.querySelector('#sidebarToggle');
-//   if (sidebarToggle) {
-//     // Uncomment Below to persist sidebar toggle between refreshes
-//     // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-//     //     document.body.classList.toggle('sb-sidenav-toggled');
-//     // }
-//     sidebarToggle.addEventListener('click', event => {
-//       event.preventDefault();
-//       document.body.classList.toggle('sb-sidenav-toggled');
-//       localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-//     });
-//   }
+function toggleSidenav() {
+  var body = document.body;
+  if (window.innerWidth <= 1200) {
+    body.classList.remove('sb-sidenav-toggled');
+  } else {
+    body.classList.add('sb-sidenav-toggled');
+  }
+}
 
-// });
+// Initial check on page load
+toggleSidenav();
 
+// Listen for window resize events
+window.addEventListener('resize', toggleSidenav);
 
-// window.addEventListener('DOMContentLoaded', event => {
-
-//   // Toggle the side navigation
-//   const sidebarToggle = document.body.querySelector('#sidebarToggle');
-//   if (sidebarToggle) {
-//     sidebarToggle.addEventListener('click', event => {
-//       event.preventDefault();
-//       document.body.classList.toggle('sb-sidenav-toggled');
-
-//       // Check the current state and update the button icon
-//       const isToggled = document.body.classList.contains('sb-sidenav-toggled');
-//       const icon = document.querySelector('#sidebarToggle i');
-//       icon.className = isToggled ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
-
-//       localStorage.setItem('sb|sidebar-toggle', isToggled);
-//     });
-//   }
-
-// });
-
-
+// Toggle the class on DOMContentLoaded
 window.addEventListener('DOMContentLoaded', event => {
-
-  // Close sidebar button
-  const sidebarClose = document.body.querySelector('#sidebarClose');
-  if (sidebarClose) {
-    sidebarClose.addEventListener('click', event => {
-      event.preventDefault();
-      document.body.classList.remove('sb-sidenav-toggled');
-      // localStorage.setItem('sb|sidebar-toggle', 'false');
-    });
-  }
-
-  // Open sidebar button
-  const sidebarOpen = document.body.querySelector('#sidebarOpen');
-  if (sidebarOpen) {
-    sidebarOpen.addEventListener('click', event => {
-      event.preventDefault();
-      document.body.classList.add('sb-sidenav-toggled');
-      // localStorage.setItem('sb|sidebar-toggle', 'true');
-    });
-  }
-
-  // Check and set initial state
-  const initialToggleState = localStorage.getItem('sb|sidebar-toggle') === 'true';
-  document.body.classList.toggle('sb-sidenav-toggled', initialToggleState);
-
-  // Update the icon based on the initial state
-  const icon = document.querySelector(`#${initialToggleState ? 'sidebarOpen' : 'sidebarClose'} i`);
-  icon.className = initialToggleState ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
-
+  toggleSidenav();
 });
 
+// --------------------------------------------------------- active class ------------------------------------------------------------------
 
+function activateLink(link) {
+  // Remove "active" class from all links
+  var links = document.querySelectorAll('.nav-link');
+  links.forEach(function (item) {
+      item.classList.remove('active');
+  });
 
+  // Add "active" class to the clicked link
+  link.classList.add('active');
+}
